@@ -9,9 +9,8 @@ Gem::Specification.new do |s|
   s.version     = DbSession::VERSION
   s.authors     = "Andrea Salomoni"
   s.email       = "andrea.salomoni@intersail.it"
-  s.homepage    = "TODO"
-  s.summary     = "Store temporary data on the database"
-  s.description = ""
+  s.homepage    = "https://github.com/asalomoni/db_session"
+  s.summary     = "A gem to simplify the task of storing temporary data in the database"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
