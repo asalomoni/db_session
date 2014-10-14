@@ -1,4 +1,5 @@
 require 'sidekiq'
+require 'models/db_session_store'
 
 class ClearSessionStoresWorker
   include Sidekiq::Worker
