@@ -1,3 +1,5 @@
+require 'rails/generators/active_record'
+
 module DbSession
   module Generators
     class InstallGenerator < Rails::Generators::Base
