@@ -1,12 +1,14 @@
 module DbSession
   require 'json'
 
+  autoload :DbSessionStore, 'models/db_session_store'
+
   SESSION_KEY = :db_session_id
   SESSION_VALIDITY = 60
 
   def get_from_db_session(key=nil)
     db_session_id = session[SESSION_KEY]
-    db_session = ::DbSessionStore.find_by(id: db_session_id) if db_session_id
+    db_session = DbSessionStore.find_by(id: db_session_id) if db_session_id
 
     if db_session
       main_data_object = JSON.parse(db_session.serialized_data)
@@ -25,7 +27,7 @@ module DbSession
     main_data_object = {}
     main_data_object[key] = value
 
-    db_session = ::DbSessionStore.create(serialized_data: main_data_object.to_json)
+    db_session = DbSessionStore.create(serialized_data: main_data_object.to_json)
     session[SESSION_KEY] = db_session.id
 
     clear_expired_sessions
@@ -35,7 +37,7 @@ module DbSession
     main_data_object = {}
 
     db_session_id = session[SESSION_KEY]
-    db_session = ::DbSessionStore.find_by(id: db_session_id) if db_session_id
+    db_session = DbSessionStore.find_by(id: db_session_id) if db_session_id
 
     main_data_object = JSON.parse(db_session.serialized_data) if db_session
     main_data_object[key] = value
@@ -44,7 +46,7 @@ module DbSession
       db_session.serialized_data = main_data_object.to_json
       db_session.save
     else
-      db_session = ::DbSessionStore.create(serialized_data: main_data_object.to_json)
+      db_session = DbSessionStore.create(serialized_data: main_data_object.to_json)
     end
 
     session[SESSION_KEY] = db_session.id
@@ -55,7 +57,7 @@ module DbSession
   def clear_db_session
     db_session_id = session[SESSION_KEY]
     if db_session_id
-      db_session = ::DbSessionStore.find_by(id: db_session_id)
+      db_session = DbSessionStore.find_by(id: db_session_id)
       db_session.destroy if db_session
     end
   end

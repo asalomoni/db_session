@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     db_session (0.0.1)
-      rails (~> 4.1.4)
+      rails
       sidekiq
 
 GEM
