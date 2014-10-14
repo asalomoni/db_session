@@ -1,5 +1,6 @@
 module DbSession
   require 'json'
+  require 'workers/clear_session_stores_worker'
 
   autoload :DbSessionStore, 'models/db_session_store'
 
@@ -62,18 +63,9 @@ module DbSession
     end
   end
 
-  class ClearExpiredSessionsJob
-    def work
-      DbSessionStore.all.each do |store|
-        store.destroy if Time.now > store.updated_at + 60.seconds
-      end
-    end
-  end
-
   def clear_expired_sessions
     begin
-      resque = Resque.new
-      resque << ImageConversionJob.new
+      ClearSessionStoresWorker.perform_async
     rescue Exception => e
       logger.error "\e[0;31m#{e.message}\e[0;31m"
     end
