@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir['test/**/*']
 
   s.add_dependency 'rails'
-  s.add_dependency 'sidekiq'
+  s.add_dependency 'resque'
 
   s.add_development_dependency 'sqlite3'
 end

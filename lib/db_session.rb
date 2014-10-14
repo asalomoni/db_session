@@ -62,9 +62,18 @@ module DbSession
     end
   end
 
+  class ClearExpiredSessionsJob
+    def work
+      DbSessionStore.all.each do |store|
+        store.destroy if Time.now > store.updated_at + 60.seconds
+      end
+    end
+  end
+
   def clear_expired_sessions
     begin
-      DbSessionStore.delay.clear_expired_sessions
+      resque = Resque.new
+      resque << ImageConversionJob.new
     rescue Exception => e
       logger.error "\e[0;31m#{e.message}\e[0;31m"
     end
