@@ -1,4 +1,4 @@
-require 'rails/generators/active_record'
+require 'rails/generators/migration'
 
 module DbSession
   module Generators
