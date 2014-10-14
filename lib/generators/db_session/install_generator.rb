@@ -14,7 +14,7 @@ module DbSession
       end
 
       def copy_db_session_initializer
-        copy_file 'initializers/db_session.rb', 'config/initializers/db_session.rb'
+        copy_file 'db_session.rb', 'config/initializers/db_session.rb'
       end
 
       def self.next_migration_number(dirname)
