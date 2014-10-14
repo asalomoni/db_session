@@ -65,7 +65,7 @@ module DbSession
 
   def clear_expired_sessions
     begin
-      ClearSessionStoresWorker.perform_async
+      ClearSessionStoresWorker.perform_async(SESSION_VALIDITY)
     rescue Exception => e
       logger.error "\e[0;31m#{e.message}\e[0;31m"
     end
