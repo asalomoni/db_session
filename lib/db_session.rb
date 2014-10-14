@@ -4,8 +4,17 @@ module DbSession
 
   autoload :DbSessionStore, 'models/db_session_store'
 
-  SESSION_KEY = :db_session_id
-  SESSION_VALIDITY = 60
+  SESSION_KEY = :db_session_store_id
+
+  mattr_accessor :session_validity
+
+  def self.setup
+    yield self
+  end
+
+  def validity_in_seconds(hours)
+    hours * 3600
+  end
 
   def get_from_db_session(key=nil)
     db_session_id = session[SESSION_KEY]
@@ -65,7 +74,7 @@ module DbSession
 
   def clear_expired_sessions
     begin
-      ClearSessionStoresWorker.perform_async(SESSION_VALIDITY)
+      ClearSessionStoresWorker.perform_async(validity_in_seconds(session_validity))
     rescue Exception => e
       logger.error "\e[0;31m#{e.message}\e[0;31m\n\e[1;33m#{'CONSEQUENCE: Old sessions are not been cleared from the database'}\e[1;33m\e[0;39m"
     end

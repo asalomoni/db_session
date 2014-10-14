@@ -13,6 +13,10 @@ module DbSession
         migration_template 'create_db_session_stores.rb', 'db/migrate/create_db_session_stores.rb'
       end
 
+      def copy_db_session_initializer
+        copy_file 'initializers/db_session.rb', 'config/initializers/db_session.rb'
+      end
+
       def self.next_migration_number(dirname)
         next_migration_number = current_migration_number(dirname) + 1
         ActiveRecord::Migration.next_migration_number(next_migration_number)
