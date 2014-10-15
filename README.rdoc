@@ -44,9 +44,7 @@ This method return the value stored in the session for the specified key. If no 
 
 This method clear the content of the session.
 
-
-<br>
-<em>That's it folks!</em>
+=== <em>That's it folks!</em>
 
 
 
