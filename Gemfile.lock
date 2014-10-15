@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     db_session (0.0.1)
+      colorize
       rails
       sidekiq
 
@@ -38,6 +39,7 @@ GEM
     builder (3.2.2)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    colorize (0.7.3)
     connection_pool (2.0.0)
     erubis (2.7.0)
     hike (1.2.3)
