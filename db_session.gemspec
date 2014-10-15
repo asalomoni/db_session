@@ -12,8 +12,8 @@ Gem::Specification.new do |s|
   s.authors     = ['Andrea Salomoni']
   s.email       = 'andrea.salomoni@intersail.it'
   s.homepage    = 'https://github.com/asalomoni/db_session'
-  s.summary     = 'A gem to simplify the task of storing temporary data in the database'
-  s.description = 'A gem to simplify the task of storing temporary data in the database'
+  s.summary     = 'Simplify the task of storing temporary data in the database'
+  s.description = 'Simplify the task of storing temporary data in the database'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
   s.test_files = Dir['test/**/*']

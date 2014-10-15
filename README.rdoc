@@ -1,3 +1,52 @@
 = DbSession
 
-This project rocks and uses MIT-LICENSE.
+Simplify the task of storing temporary data in the database.
+
+=== Getting started
+
+Add DbSession to your Gemfile:
+
+<tt>gem 'db_session'</tt>
+
+Run the bundle command to install it.
+
+After you install DbSession and add it to your Gemfile, you need to run the generator:
+
+<tt>rails generate db_session:install</tt>
+
+The generator will install an initializer which describes DbSession configuration options.
+
+=== Configuration
+
+You can set up the life span of a session in <i>config/initializers/db_session.rb</i>:
+
+<tt>config.session_validity = 60 * 60 * 24 * 2</tt>
+
+This value represent the time in seconds after which a session expire and can potentially be deleted from the database. The expiration of a session is counted from the time it was last modified.
+
+=== Usage
+
+You can call this methods inside any controller:
+
+<tt>set_db_session(key, value)</tt>
+
+This method overwrite the content of the session with the key–value pair.
+
+<tt>add_to_db_session(key, value)</tt>
+
+This method add the key–value pair to the content of the session.
+
+<tt>get_from_db_session(key)</tt>
+
+This method return the value stored in the session for the specified key. If no key is specified it returns the whole content of the session.
+
+<tt>clear_db_session</tt>
+
+This method clear the content of the session.
+
+
+
+<em>That's it folks!</em>
+
+
+

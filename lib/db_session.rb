@@ -74,7 +74,6 @@ module DbSession
     rescue Exception => e
       logger.error e.message.colorize(:color => :red, :background => :black)
       logger.error 'CONSEQUENCE: Old sessions are not been cleared from the database'.colorize(:color => :yellow, :background => :black)
-      #logger.error "\e[0;31m#{e.message}\e[0;31m\n\e[1;33m#{'CONSEQUENCE: Old sessions are not been cleared from the database'}\e[1;33m\e[0;39m"
     end
   end
 end
