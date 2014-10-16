@@ -26,7 +26,7 @@ This value represent the time in seconds after which a session expire and can po
 
 === Usage
 
-You can call this methods on any controller:
+You can call this methods on any controller or view:
 
 <tt>set_db_session(key, value)</tt>
 
