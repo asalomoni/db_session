@@ -16,6 +16,8 @@ After you install DbSession and add it to your Gemfile, you need to run the gene
 
 The generator will install an initializer which describes DbSession configuration options.
 
+DbSession uses Sidekiq to perform some asynchronous task. Sidekiq uses Redis to manage its job queue, so you’ll need to install Redis.
+
 === Configuration
 
 You can set up the life span of a session in <i>config/initializers/db_session.rb</i>:
@@ -28,21 +30,23 @@ This value represent the time in seconds after which a session expire and can po
 
 You can call this methods on any controller or view:
 
-<tt>set_db_session(key, value)</tt>
+<tt>set_db_session(key, object)</tt>
 
-This method overwrite the content of the session with the key–value pair.
+This method overwrite the content of the session with the key–object pair.
 
-<tt>add_to_db_session(key, value)</tt>
+<tt>add_to_db_session(key, object)</tt>
 
-This method add the key–value pair to the content of the session.
+This method add the key–object pair to the content of the session.
 
 <tt>get_from_db_session(key)</tt>
 
-This method return the value stored in the session for the specified key. If no key is specified it returns the whole content of the session.
+This method return the object stored in the session for the specified key. If no key is specified it returns the whole content of the session.
 
 <tt>clear_db_session</tt>
 
 This method clear the content of the session.
+
+Objects are sotred in the database as JSON strings, so in order to be stored an object need to support JSON serialization and deserialization.
 
 === <em>That's it folks!</em>
 
