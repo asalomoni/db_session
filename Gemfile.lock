@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    db_session (1.0.0)
+    db_session (1.0.1)
       colorize
       rails
       sidekiq
@@ -47,7 +47,7 @@ GEM
     json (1.8.1)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
-    mime-types (2.4.1)
+    mime-types (2.4.2)
     minitest (5.4.2)
     multi_json (1.10.1)
     rack (1.5.2)
