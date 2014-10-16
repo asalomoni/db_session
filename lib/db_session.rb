@@ -86,10 +86,12 @@ module DbSession
   private
 
   def rebuild_object(obj)
-    if obj[:class]
-      class_from_string(obj[:class]).new.assign_attributes(obj[:object])
+    if obj['class']
+      new = class_from_string(obj['class']).new
+      new.assign_attributes(obj['object'])
+      new
     else
-      obj[:object]
+      obj['object']
     end
   end
 
